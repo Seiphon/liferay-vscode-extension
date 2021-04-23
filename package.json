@@ -1,8 +1,10 @@
 {
-	"name": "liferay-extention",
-	"displayName": "Liferay Extention",
-	"description": "This is an Extention to support developing liferay portal.",
+	"name": "liferay-extension",
+	"displayName": "Liferay Extension",
+	"description": "This is an Extension to support developing liferay portal.",
+	"keywords": ["vscode", "Liferay", "portal"],
 	"version": "0.0.1",
+	"icon": "resources/liferay_logo_large.png",
 	"engines": {
 		"vscode": "^1.55.0"
 	},
@@ -19,7 +21,68 @@
 				"command": "liferay-extention.helloWorld",
 				"title": "Hello World"
 			}
-		]
+		],
+
+		"keybindings": [
+            {
+                "command": "liferay-extention.helloWorld",
+                "key": "ctrl+f10",
+                "mac": "cmd+f10",
+                "when": "editorTextFocus"
+            }
+        ],
+
+        "menus": {
+			"view/title": [
+				{
+					"command": "liferay-extention.helloWorld",
+					"when": "view == liferayPortal",
+					"group": "navigation"
+				}
+			],
+
+            "editor/context": [
+                {
+                    "when": "editorFocus",
+                    "command": "liferay-extention.helloWorld",
+                    "group": "navigation"
+                }
+            ],
+
+			"explorer/context": [
+				{
+					"command": "liferay-extention.helloWorld",
+					"group": "navigation"
+				}
+			]
+        },
+
+		"viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "liferayExtension",
+                    "title": "Liferay Extension",
+                    "icon": "resources/liferay.svg"
+                }
+            ]
+        },
+
+		"views": {
+			"liferayExtension": [
+                {
+                    "id": "liferayPortal",
+                    "name": "Liferay Portal"
+                },
+                {
+                    "id": "liferayServer",
+                    "name": "Liferay Server"
+                },
+                {
+                    "id": "lifereayUpgradeTool",
+                    "name": "Liferay Upgrade Tool"
+                }
+            ]
+        }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
